@@ -9,7 +9,3 @@ const LogoComp = () => {
 }
 
 export default LogoComp
-
-// import SearchIcon from '@mui/icons-material/Search';
-// import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-// import AddIcon from '@mui/icons-material/Add';

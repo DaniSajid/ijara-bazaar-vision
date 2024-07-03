@@ -75,3 +75,6 @@ h1,h2,h3,h4,h5,h6{
 .noulh:hover{
     text-decoration: underline;
 }
+input,button,select,textarea{
+    outline: none;
+}
