@@ -1,10 +1,54 @@
 import "../../reusable/props.css";
 import SearchIcon from "@mui/icons-material/Search";
 import LogoComp from "./LogoComp";
+import { styled, alpha } from "@mui/material/styles";
+import InputBase from "@mui/material/InputBase";
 import InventoryIcon from "@mui/icons-material/Inventory";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Button, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+
+const Search = styled("div")(({ theme }) => ({
+  position: "relative",
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  "&:hover": {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: "100%",
+  [theme.breakpoints.up("sm")]: {
+    marginLeft: theme.spacing(1),
+    width: "auto",
+  },
+}));
+
+const SearchIconWrapper = styled("div")(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: "100%",
+  position: "absolute",
+  pointerEvents: "none",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+}));
+
+const StyledInputBase = styled(InputBase)(({ theme }) => ({
+  color: "inherit",
+  width: "100%",
+  "& .MuiInputBase-input": {
+    padding: theme.spacing(1, 1, 1, 0),
+    // vertical padding + font size from searchIcon
+    paddingLeft: `calc(1em + ${theme.spacing(4)})`,
+    transition: theme.transitions.create("width"),
+    [theme.breakpoints.up("sm")]: {
+      width: "12ch",
+      "&:focus": {
+        width: "20ch",
+      },
+    },
+  },
+}));
 const HeaderComp = () => {
   return (
     <>
@@ -43,14 +87,16 @@ const HeaderComp = () => {
               className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3"
               role="search"
             >
-              <div className="search flex aic">
-                <input
-                  type="text"
-                  placeholder="find your product..."
-                  className="query s15 font"
+              <Search>
+                <SearchIconWrapper>
+                  <SearchIcon />
+                </SearchIconWrapper>
+                <StyledInputBase
+                className="border border-black"
+                  placeholder="Search…"
+                  inputProps={{ "aria-label": "search" }}
                 />
-                <SearchIcon className="go s24" />
-              </div>
+              </Search>
             </form>
             <div className="dropdown text-end">
               <a
