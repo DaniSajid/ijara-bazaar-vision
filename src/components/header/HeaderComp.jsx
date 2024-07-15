@@ -1,12 +1,21 @@
+import * as React from "react";
 import "../../reusable/props.css";
 import SearchIcon from "@mui/icons-material/Search";
 import LogoComp from "./LogoComp";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
 import InventoryIcon from "@mui/icons-material/Inventory";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { Button, Fab } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
+import { useTheme } from "@mui/material/styles";
+import Box from "@mui/material/Box";
+import OutlinedInput from "@mui/material/OutlinedInput";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select from "@mui/material/Select";
+import Chip from "@mui/material/Chip";
+import {  NavLink } from "react-router-dom";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -49,7 +58,47 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
   },
 }));
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
+
+const names = [
+  "Karachi,Pakistan",
+  "Sindh,Pakistan",
+  "Punjab,Pakistan",
+  "Kpk,Pakistan",
+  "Azad Kashmir,Pakistan",
+];
+
+function getStyles(name, personName, theme) {
+  return {
+    fontWeight:
+      personName.indexOf(name) === -1
+        ? theme.typography.fontWeightRegular
+        : theme.typography.fontWeightMedium,
+  };
+}
+
 const HeaderComp = () => {
+  const theme = useTheme();
+  const [personName, setPersonName] = React.useState([]);
+
+  const handleChange = (event) => {
+    const {
+      target: { value },
+    } = event;
+    setPersonName(
+      // On autofill we get a stringified value.
+      typeof value === "string" ? value.split(",") : value
+    );
+  };
   return (
     <>
       <header className="mt-2 border-bottom">
@@ -62,7 +111,23 @@ const HeaderComp = () => {
             <InventoryIcon className="mx-2" />
             <span className="fs-5">Rent Product</span>
           </a>
-          <div className="col-12 col-lg-auto mb-3 mb-lg-0" role="search">
+          <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+           
+            <li>
+            <NavLink  to="/" className="nav-link px-2 link-dark">Home</NavLink>
+           
+            </li>
+            <li>
+            <NavLink  to="/" className="nav-link px-2 link-dark">Category</NavLink>
+            </li>
+            <li>
+            <NavLink  to="/about" className="nav-link px-2 link-dark">About</NavLink>
+            </li>
+            <li>
+            <NavLink  to="/contact" className="nav-link px-2 link-dark">Contact</NavLink>
+            </li>
+          </ul>
+          <div className="col-12 col-lg-auto mb-3 mb-lg-0 " role="search">
             <Fab variant="extended" size="small" color="primary">
               <AddIcon sx={{ mr: 1 }} />
               Sell
@@ -73,14 +138,47 @@ const HeaderComp = () => {
           </div>
         </div>
       </header>
-      <div className=" mb-3 border-bottom">
+      <div className="  border-bottom">
         <div className="container">
           <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
             <div className="col-12 py-2 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-              <div className="location rel flex aic">
-                <SearchIcon className="ico s24" />
-                <input className="label s15 font" placeholder="your location" />
-                <KeyboardArrowDownIcon className="arro s24" />
+              <div>
+                <FormControl sx={{ m: 1, width: 300 }}>
+                  <InputLabel id="demo-multiple-chip-label">
+                    Your Location
+                  </InputLabel>
+                  <Select
+                    labelId="demo-multiple-chip-label"
+                    id="demo-multiple-chip"
+                    multiple
+                    value={personName}
+                    onChange={handleChange}
+                    input={
+                      <OutlinedInput
+                        id="select-multiple-chip"
+                        label="Your Location"
+                      />
+                    }
+                    renderValue={(selected) => (
+                      <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+                        {selected.map((value) => (
+                          <Chip key={value} label={value} />
+                        ))}
+                      </Box>
+                    )}
+                    MenuProps={MenuProps}
+                  >
+                    {names.map((name) => (
+                      <MenuItem
+                        key={name}
+                        value={name}
+                        style={getStyles(name, personName, theme)}
+                      >
+                        {name}
+                      </MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
               </div>
             </div>
             <form
@@ -92,7 +190,7 @@ const HeaderComp = () => {
                   <SearchIcon />
                 </SearchIconWrapper>
                 <StyledInputBase
-                className="border border-black"
+                  className="border border-black"
                   placeholder="Search…"
                   inputProps={{ "aria-label": "search" }}
                 />
