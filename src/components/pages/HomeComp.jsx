@@ -12,6 +12,7 @@ import AppShortcutIcon from '@mui/icons-material/AppShortcut';
 import WatchIcon from '@mui/icons-material/Watch';
 import ControlCameraIcon from '@mui/icons-material/ControlCamera';
 import { Button } from "@mui/material";
+import CardComp from "./card/CardComp";
 const HomeComp = () => {
   const [value, setValue] = useState('1');
 
@@ -79,14 +80,18 @@ const HomeComp = () => {
       <TabContext value={value}>
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example" centered>
-            <Tab icon={<WatchIcon/>} label="Watch" value="1" />
-            <Tab icon={<AppShortcutIcon/>} label="Mobile Phone" value="2" />
-            <Tab icon={<ControlCameraIcon/>} label="Drone" value="3" />
+            <Tab icon={<WatchIcon/>} label="Electronics & Gadgets" value="1" />
+            <Tab icon={<AppShortcutIcon/>} label="Event Equipment" value="2" />
+            <Tab icon={<ControlCameraIcon/>} label="Furniture" value="3" />
+            <Tab icon={<ControlCameraIcon/>} label="Fashion & Accessories" value="4" />
           </TabList>
         </Box>
-        <TabPanel value="1">Item One</TabPanel>
+        <TabPanel value="1">Item One
+          <CardComp/>
+        </TabPanel>
         <TabPanel value="2">Item Two</TabPanel>
         <TabPanel value="3">Item Three</TabPanel>
+        <TabPanel value="4">Item four</TabPanel>
       </TabContext>
     </Box>
 </>

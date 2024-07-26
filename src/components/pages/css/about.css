@@ -1,0 +1,33 @@
+.container-about {
+    margin-top: 50px;
+  }
+  
+  img.img-fluid {
+    width: 100%;
+    height: auto;
+  }
+  
+  h2, h3 {
+    margin-bottom: 20px;
+  }
+  
+  .brands img {
+    max-width: 100px;
+    margin: 10px;
+  }
+  
+  .testimonial {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .testimonial p {
+    margin: 0;
+  }
+  
+  .testimonial strong {
+    display: block;
+    margin-top: 10px;
+  }

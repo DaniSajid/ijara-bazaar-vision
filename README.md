@@ -9,3 +9,32 @@ Currently, two official plugins are available:
 
 
 https://www.youtube.com/watch?v=ylW_Co1Oz4c
+
+
+Furniture
+
+Sofas
+Beds
+Dining Tables
+Office Desks
+
+Fashion & Accessories
+
+Designer Dresses
+Jewelry
+Handbags
+Watches
+
+Electronics & Gadgets
+
+Cameras
+Laptops
+Smartphones
+Drones
+
+Event Equipment
+
+Party Tents
+Sound Systems
+Lighting
+Projectors

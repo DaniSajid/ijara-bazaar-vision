@@ -15,7 +15,8 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import Chip from "@mui/material/Chip";
-import {  NavLink } from "react-router-dom";
+import {  NavLink ,Link} from "react-router-dom";
+
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -226,9 +227,9 @@ const HeaderComp = () => {
                   </a>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Settings
-                  </a>
+                  <Link className="dropdown-item" to="/accountSetting">
+                   Account Settings
+                  </Link>
                 </li>
                 <li>
                   <a className="dropdown-item" href="#">
