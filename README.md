@@ -18,12 +18,6 @@ Beds
 Dining Tables
 Office Desks
 
-Fashion & Accessories
-
-Designer Dresses
-Jewelry
-Handbags
-Watches
 
 Electronics & Gadgets
 

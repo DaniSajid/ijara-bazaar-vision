@@ -11,8 +11,9 @@ import { useState } from "react";
 import AppShortcutIcon from '@mui/icons-material/AppShortcut';
 import WatchIcon from '@mui/icons-material/Watch';
 import ControlCameraIcon from '@mui/icons-material/ControlCamera';
-import { Button } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import CardComp from "./card/CardComp";
+import { categoriesProduct, eventEquipment, Furniture } from "../../ProductData";
 const HomeComp = () => {
   const [value, setValue] = useState('1');
 
@@ -83,15 +84,31 @@ const HomeComp = () => {
             <Tab icon={<WatchIcon/>} label="Electronics & Gadgets" value="1" />
             <Tab icon={<AppShortcutIcon/>} label="Event Equipment" value="2" />
             <Tab icon={<ControlCameraIcon/>} label="Furniture" value="3" />
-            <Tab icon={<ControlCameraIcon/>} label="Fashion & Accessories" value="4" />
           </TabList>
         </Box>
-        <TabPanel value="1">Item One
-          <CardComp/>
+        <TabPanel value="1">
+        <Box>
+        <Grid container columns={12} spacing={2}>
+        {categoriesProduct.map((item ,index) => (
+          <CardComp catIndex={index} catTit={item.title} catName={item.name} catImg={item.image_url} catDesc={item.description} />
+        ))}
+       </Grid>
+          </Box>
         </TabPanel>
-        <TabPanel value="2">Item Two</TabPanel>
-        <TabPanel value="3">Item Three</TabPanel>
-        <TabPanel value="4">Item four</TabPanel>
+        <TabPanel value="2">   <Box>
+        <Grid container columns={12} spacing={2}>
+        {eventEquipment.map((item ,index) => (
+          <CardComp catIndex={index} catTit={item.title} catName={item.name} catImg={item.image_url} catDesc={item.description} />
+        ))}
+       </Grid>
+          </Box></TabPanel>
+        <TabPanel value="3">  <Box>
+        <Grid container columns={12} spacing={2}>
+        {Furniture.map((item ,index) => (
+          <CardComp catIndex={index} catTit={item.title} catName={item.name} catImg={item.image_url} catDesc={item.description} />
+        ))}
+       </Grid>
+          </Box></TabPanel>
       </TabContext>
     </Box>
 </>
