@@ -131,7 +131,7 @@ const HeaderComp = () => {
           <div className="col-12 col-lg-auto mb-3 mb-lg-0 " role="search">
             <Fab variant="extended" size="small" color="primary">
               <AddIcon sx={{ mr: 1 }} />
-              Sell
+            <Link to='/account' className="text-white text-decoration-none ">Sell</Link>  
             </Fab>
             <Button variant="contained" className="mx-2">
               Login

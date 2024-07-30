@@ -6,6 +6,7 @@ import FooterComp from "./components/footer/FooterComp"
 import About from "./components/pages/About"
 import Contact from "./components/pages/Contact"
 import UserEditComp from "./components/pages/user/UserEditComp"
+import LoginSignupForm from "./components/pages/loginSignup/LoginSignupForm"
 
 
 
@@ -20,6 +21,7 @@ function App() {
   <Route path="/about" element={<About />} />
   <Route path="/contact" element={<Contact />} />
   <Route path="/accountSetting" element={<UserEditComp />} />
+  <Route path="/account" element={<LoginSignupForm />} />
 </Routes>
 <FooterComp/>
 </BrowserRouter>
